@@ -13,20 +13,17 @@ class TestAddContact(unittest.TestCase):
 
     def test_add_contact(self):
         wd = self.wd
-        self.open_homepage(wd)
         self.login(wd, username="admin", password="secret")
-        self.open_contact_page(wd)
-        self.init_conrtact_creation(wd)
         self.fill_contact_form(wd, contact(firstname="Limaeva", middlename="Ekaterina", lastname="Alexandrovna", nickname="kvakva", title="w", company="company123",
                                address="Moscow mirovaya 1-23", home_telephone="8-999-999-12-12", email="testirovanie@mail.comcom", birth_date="16", birth_month="January",
                                birth_year="1988"))
-        self.submit_contact_creation(wd)
         self.logout(wd)
 
     def logout(self, wd):
         wd.find_element_by_link_text("Logout").click()
 
     def submit_contact_creation(self, wd):
+        self.submit_contact_creation(wd)
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
     def fill_contact_form(self, wd, contact):
@@ -66,12 +63,15 @@ class TestAddContact(unittest.TestCase):
         wd.find_element_by_name("theform").click()
 
     def init_conrtact_creation(self, wd):
+        self.init_conrtact_creation(wd)
         wd.find_element_by_link_text("add new").click()
 
     def open_contact_page(self, wd):
+        self.open_contact_page(wd)
         wd.find_element_by_id("header").click()
 
     def login(self, wd, username, password):
+        self.open_homepage(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
@@ -82,7 +82,7 @@ class TestAddContact(unittest.TestCase):
     def open_homepage(self, wd):
         wd.get("http://localhost/addressbook/")
 
-    def is_element_present(self, how, what):
+    """def is_element_present(self, how, what):
         try: self.wd.find_element(by=how, value=what)
         except NoSuchElementException as e: return False
         return True
@@ -90,7 +90,7 @@ class TestAddContact(unittest.TestCase):
     def is_alert_present(self):
         try: self.wd.switch_to_alert()
         except NoAlertPresentException as e: return False
-        return True
+        return True"""
     
     def tearDown(self):
         self.wd.quit()
