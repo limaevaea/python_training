@@ -2,20 +2,20 @@ from selenium.webdriver.support.ui import Select
 
 class ContactHelper:
 
-    def __init__(self, cont_app):
-        self.cont_app = cont_app
+    def __init__(self, app):
+        self.app = app
 
     def open_contact_page(self):
-        wd = self.cont_app.wd
+        wd = self.app.wd
         wd.find_element_by_id("header").click()
 
     def init_contact_creation(self):
-        wd = self.cont_app.wd
+        wd = self.app.wd
         self.open_contact_page()
         wd.find_element_by_link_text("add new").click()
 
     def fill_contact_form(self, contact):
-        wd = self.cont_app.wd
+        wd = self.app.wd
         self.init_contact_creation()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -53,6 +53,6 @@ class ContactHelper:
         wd.find_element_by_name("theform").click()
 
     def submit_contact_creation(self):
-        wd = self.cont_app.wd
+        wd = self.app.wd
         self.submit_contact_creation()
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
