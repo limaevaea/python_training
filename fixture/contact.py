@@ -52,6 +52,14 @@ class ContactHelper:
         wd.find_element_by_name("theform").click()
         wd.find_element_by_name("theform").click()
 
+    def delete_first_contact(self):
+        wd = self.app.wd
+        self.open_contact_page() # ili inoe?
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("(//input[@type='button' and @value='Delete'])").click()
+        wd.switch_to_alert().accept()
+
+
     def submit_contact_creation(self):
         wd = self.app.wd
         self.submit_contact_creation()
