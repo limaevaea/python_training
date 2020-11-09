@@ -2,8 +2,8 @@
 
 class contact:
     #делаем конструктор
-    def __init__(self, firstname, middlename, lastname, nickname, title, company, address, home_telephone,
-                          email, birth_date, birth_month, birth_year):
+    def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, title=None, company=None, address=None, home=None,
+                 email=None, birth_date=None, birth_month=None, birth_year=None):
         self.firstname = firstname
         self.middlename = middlename
         self.lastname = lastname
@@ -11,7 +11,7 @@ class contact:
         self.title = title
         self.company = company
         self.address = address
-        self.home_telephone = home_telephone
+        self.home = home
         self.email = email
         self.birth_date = birth_date
         self.birth_month = birth_month

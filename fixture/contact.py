@@ -36,41 +36,35 @@ class ContactHelper:
         # submit edit contact
         wd.find_element_by_name("update").click()
 
+    def change_contact_date(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
+
+
+    def change_calendar_date(self, field_date, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_xpath("(//div[@id='content']/form)").click()
+            wd.find_element_by_name(field_date).click()
+            wd.find_element_by_name(field_date).send_keys(text)
+
     def fill_contact_form(self, contact):
         wd = self.app.wd
-        wd.find_element_by_name("firstname").click()
-        wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(contact.firstname)
-        wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(contact.middlename)
-        wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(contact.lastname)
-        wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(contact.nickname)
-        wd.find_element_by_name("title").click()
-        wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys(contact.title)
-        wd.find_element_by_name("company").click()
-        wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys(contact.company)
-        wd.find_element_by_name("address").click()
-        wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(contact.address)
-        wd.find_element_by_name("home").click()
-        wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(contact.home_telephone)
-        wd.find_element_by_name("email").click()
-        wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(contact.email)
-        wd.find_element_by_xpath("(//div[@id='content']/form)").click()
-        wd.find_element_by_name("bday").click()
-        Select(wd.find_element_by_name("bday")).select_by_visible_text(contact.birth_date)
-        wd.find_element_by_name("bmonth").click()
-        Select(wd.find_element_by_name("bmonth")).select_by_visible_text(contact.birth_month)
-        wd.find_element_by_name("byear").click()
-        wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys(contact.birth_year)
-        wd.find_element_by_xpath("(//div[@id='content']/form)").click()
+        self.change_contact_date("firstname", contact.firstname)
+        self.change_contact_date("middlename", contact.middlename)
+        self.change_contact_date("lastname", contact.lastname)
+        self.change_contact_date("nickname", contact.nickname)
+        self.change_contact_date("title", contact.title)
+        self.change_contact_date("company", contact.company)
+        self.change_contact_date("address", contact.address)
+        self.change_contact_date("home", contact.home)
+        self.change_contact_date("email", contact.email)
+        self.change_calendar_date("bday", contact.birth_date)
+        self.change_calendar_date("bmonth", contact.birth_month)
+        self.change_calendar_date("byear", contact.birth_year)
 
     def submit_contact_creation(self):
         wd = self.app.wd
