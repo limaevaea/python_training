@@ -7,7 +7,7 @@ class ContactHelper:
 
     def open_contact_page(self):
         wd = self.app.wd
-        wd.find_element_by_id("header").click()
+        wd.find_element_by_link_text("home").click()
 
     def init_contact_creation(self):
         wd = self.app.wd
