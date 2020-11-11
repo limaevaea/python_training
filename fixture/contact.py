@@ -7,6 +7,8 @@ class ContactHelper:
 
     def open_contact_page(self):
         wd = self.app.wd
+        if wd.current_url.endswith("addressbook/") and len(wd.find_elements_by_xpath("(//img[@alt='Edit'])")) > 0:
+            return
         wd.find_element_by_link_text("home").click()
 
     def init_contact_creation(self):
@@ -18,7 +20,6 @@ class ContactHelper:
         wd = self.app.wd
         self.init_contact_creation()
         self.fill_contact_form(contact)
-        #wd.find_element_by_name("theform").click()
         wd.find_element_by_name("submit").click()
 
     def delete_first_contact(self):
