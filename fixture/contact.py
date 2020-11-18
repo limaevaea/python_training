@@ -89,7 +89,8 @@ class ContactHelper:
             text2 = cells[2].text
             #lname = element.find_elements_by_xpath(".//td[2]").text
             #fname = element.find_elements_by_xpath(".//td[3]").text
-            id = element.find_element_by_name("selected[]").get_attribute("value")
+            #id = element.find_element_by_name("selected[]").get_attribute("value")
+            id = cells[1].get_attribute("value")
             #contacts.append(contact(lastname=lname, firstname=fname, id=id))
             contacts.append(contact(lastname=text1, firstname=text2, id=id))
         return contacts
