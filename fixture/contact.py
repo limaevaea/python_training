@@ -23,6 +23,7 @@ class ContactHelper:
         self.init_contact_creation()
         self.fill_contact_form(contact)
         wd.find_element_by_name("submit").click()
+        self.contact_cache = None
 
     def delete_first_contact(self):
         wd = self.app.wd
@@ -39,6 +40,7 @@ class ContactHelper:
         self.fill_contact_form(contact)
         # submit edit contact
         wd.find_element_by_name("update").click()
+        self.contact_cache = None
 
     def change_contact_date(self, field_name, text):
         wd = self.app.wd
