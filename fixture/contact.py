@@ -25,17 +25,23 @@ class ContactHelper:
         wd.find_element_by_name("submit").click()
         self.contact_cache = None
 
-    def delete_first_contact(self):
+    def select_group_by_index(self, index):
         wd = self.app.wd
         self.open_contact_page()
-        wd.find_element_by_name("selected[]").click()
+        wd.find_elements_by_name("selected[]")[index].click()
+
+    def delete_first_contact(self,index):
+        wd = self.app.wd
+        self.select_group_by_index(index)
         wd.find_element_by_xpath("(//input[@value='Delete'])").click()
         wd.switch_to_alert().accept()
+        self.contact_cache = None
 
-    def edit_first_contact(self, contact):
+    def edit_some_contact(self, index, contact):
         wd = self.app.wd
         self.open_contact_page()
-        wd.find_element_by_xpath("(//img[@alt='Edit'])").click()
+        rows = wd.find_elements_by_name("entry")
+        rows[index].find_element_by_xpath("./td[8]/a/img").click()
         # edit contact form
         self.fill_contact_form(contact)
         # submit edit contact
@@ -90,8 +96,7 @@ class ContactHelper:
             self.open_contact_page()
             self.contact_cache = []
             for element in wd.find_elements_by_name("entry"):  #for element in wd.find_element_by_xpath("//table[@id='maintable']//tr")
-                #cells = element.find_elements_by_tag_name("td")
-                cells = element.find_elements(By.XPATH, ".//td")
+                cells = element.find_elements_by_tag_name("td")
                 text1 = cells[1].text
                 text2 = cells[2].text
                 id = element.find_element_by_name("selected[]").get_attribute("value")
