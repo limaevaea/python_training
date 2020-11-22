@@ -30,7 +30,7 @@ class ContactHelper:
         self.open_contact_page()
         wd.find_elements_by_name("selected[]")[index].click()
 
-    def delete_first_contact(self,index):
+    def delete_some_contact(self, index):
         wd = self.app.wd
         self.select_contact_by_index(index)
         wd.find_element_by_xpath("(//input[@value='Delete'])").click()
