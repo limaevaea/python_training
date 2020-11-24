@@ -2,7 +2,7 @@ from sys import maxsize
 
 class contact:
     #делаем конструктор
-    def __init__(self, firstname=None, middlename=None, lastname=None, nickname=None, title=None, company=None, address=None, home=None,
+    def __init__(self, firstname=None, middlename=None, lastname=None,  nickname=None, title=None, company=None, address=None, home=None,
                  mobile=None, work=None, all_phones_from_homepage=None , all_emails_from_homepage=None, email=None, email2=None,
                  email3=None, birth_date=None, birth_month=None, birth_year=None, id=None):
         self.firstname = firstname

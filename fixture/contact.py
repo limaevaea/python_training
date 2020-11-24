@@ -107,8 +107,9 @@ class ContactHelper:
                 id = cells[0].find_element_by_tag_name("input").get_attribute("value")
                 all_phones = cells[5].text #порезать строчку на части
                 all_emails = cells[4].text
-                self.contact_cache.append(contact(firstname=text1, lastname=text2, id=id, all_phones_from_homepage=all_phones,
-                                                  all_emails_from_homepage=all_emails))
+                address = cells[3].text
+                self.contact_cache.append(contact(firstname=text2, lastname=text1, id=id, all_phones_from_homepage=all_phones,
+                                                 all_emails_from_homepage=all_emails, address=address))
         return list(self.contact_cache)
 
     def open_contact_to_edit_by_index(self, index):
@@ -117,9 +118,6 @@ class ContactHelper:
         row = wd.find_elements_by_name("entry")[index]
         cell = row.find_elements_by_tag_name("td")[7]
         cell.find_element_by_tag_name("a").click()
-        #self.select_contact_by_index(index)
-        #rows = wd.find_elements_by_name("entry")
-        #rows[index].find_element_by_xpath("./td[8]/a/img").click()
 
     def open_contact_to_view_by_index(self, index):
         wd = self.app.wd
@@ -140,8 +138,9 @@ class ContactHelper:
         email = wd.find_element_by_name('email').get_attribute("value")
         email2 = wd.find_element_by_name('email2').get_attribute("value")
         email3 = wd.find_element_by_name('email3').get_attribute("value")
+        address = wd.find_element_by_name('address').get_attribute("value")
         return contact(firstname=firstname, lastname=lastname, id=id, home=home,
-                       mobile=mobile, work=work, email=email, email2=email2, email3=email3)
+                       mobile=mobile, work=work, email=email, email2=email2, email3=email3, address=address)
 
     def get_contact_from_view_page(self, index):
         wd = self.app.wd
