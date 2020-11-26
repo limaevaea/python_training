@@ -1,6 +1,6 @@
 from sys import maxsize
 
-class contact:
+class Сontact:
     #делаем конструктор
     def __init__(self, firstname=None, middlename=None, lastname=None,  nickname=None, title=None, company=None, address=None, home=None,
                  mobile=None, work=None, all_phones_from_homepage=None , all_emails_from_homepage=None, email=None, email2=None,

@@ -5,7 +5,7 @@ import random #выбираем случано
 import string #содержит константы списки символов
 
 def random_string(prefix, maxlen):
-    symbols = string.ascii_letters + string.digits + " "*10
+    symbols = string.ascii_letters + string.digits #+ " "*10
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
 testdata = [Group(name="", header="", footer="")] + [

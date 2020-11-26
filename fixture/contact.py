@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
-from model.contact import contact
+from model.сontact import Сontact
 import re
 
 class ContactHelper:
@@ -108,8 +108,8 @@ class ContactHelper:
                 all_phones = cells[5].text #порезать строчку на части
                 all_emails = cells[4].text
                 address = cells[3].text
-                self.contact_cache.append(contact(firstname=text2, lastname=text1, id=id, all_phones_from_homepage=all_phones,
-                                                 all_emails_from_homepage=all_emails, address=address))
+                self.contact_cache.append(Сontact(firstname=text2, lastname=text1, id=id, all_phones_from_homepage=all_phones,
+                                                  all_emails_from_homepage=all_emails, address=address))
         return list(self.contact_cache)
 
     def open_contact_to_edit_by_index(self, index):
@@ -139,7 +139,7 @@ class ContactHelper:
         email2 = wd.find_element_by_name('email2').get_attribute("value")
         email3 = wd.find_element_by_name('email3').get_attribute("value")
         address = wd.find_element_by_name('address').get_attribute("value")
-        return contact(firstname=firstname, lastname=lastname, id=id, home=home,
+        return Сontact(firstname=firstname, lastname=lastname, id=id, home=home,
                        mobile=mobile, work=work, email=email, email2=email2, email3=email3, address=address)
 
     def get_contact_from_view_page(self, index):
@@ -152,4 +152,4 @@ class ContactHelper:
         email = wd.find_elements_by_tag_name("a")[0]
         email2 = wd.find_elements_by_tag_name("a")[1]
         email3 = wd.find_elements_by_tag_name("a")[2]
-        return contact(home=home, mobile=mobile, work=work , email=email, email2=email2, email3=email3)
+        return Сontact(home=home, mobile=mobile, work=work, email=email, email2=email2, email3=email3)
