@@ -32,7 +32,7 @@ testdata = [Group(name="", header="", footer="")] + [
     ]
 
 #save data in file
-file = os.path.join(os.path.dirname(os.path.abspath(__file__)),"..", f)
+file = os.path.join(os.path.dirname(os.path.abspath(__file__)),"..", f) #"../data/groups.json"
 
 with open(file, "w") as rjson:
     jsonpickle.set_encoder_options("json", indent=2)

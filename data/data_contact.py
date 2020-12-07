@@ -2,7 +2,13 @@ from model.сontact import Сontact
 import random #выбираем случано
 import string #содержит константы списки символов
 
-constant = [
+
+testdata = [
+    Сontact(firstname="Ivanova", middlename="Ekaterina", lastname="last1"),
+    Сontact(firstname="Petrova", middlename="Ekaterina", lastname="last2")
+]
+
+'''constant = [
     Сontact(firstname="Ivanova", middlename="Ekaterina", lastname="last1"),
     Сontact(firstname="Petrova", middlename="Ekaterina", lastname="last2")
 ]
@@ -16,4 +22,4 @@ testdata = [Сontact(firstname="", middlename="Ekaterina", lastname="")] + [
             company="company123", address="Moscow mirovaya 1-23", home="8-912-854-854", mobile="12345", work="2345", email="testirovanie@mail.comcom",
             birth_date="16", birth_month="January", birth_year="1988")
     for i in range(5)
-]
+]'''
