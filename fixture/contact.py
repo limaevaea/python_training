@@ -64,6 +64,19 @@ class ContactHelper:
         wd.find_element_by_name("update").click()
         self.contact_cache = None
 
+    def edit_some_contact_by_id(self, id, contact):
+        wd = self.app.wd
+        self.open_contact_page()
+        self.select_contact_by_id(id)
+        rows = wd.find_elements_by_name("entry")
+        wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        rows.find_element_by_xpath("./td[8]/a/img").click()
+        # edit contact form
+        self.fill_contact_form(contact)
+        # submit edit contact
+        wd.find_element_by_name("update").click()
+        self.contact_cache = None
+
     def change_contact_date(self, field_name, text):
         wd = self.app.wd
         if text is not None:

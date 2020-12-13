@@ -51,6 +51,17 @@ class GroupHelper:
         wd.find_element_by_name("update").click()
         self.group_cache = None
 
+    def edit_group_by_id(self, id, group):
+        wd = self.app.wd
+        self.open_groups_page()
+        self.select_group_by_id(id)
+        wd.find_element_by_name("edit").click()
+        self.fill_group_form(group)
+        # submit edit group
+        wd.find_element_by_name("update").click()
+        self.group_cache = None
+
+
     def change_field_value(self, field_name, text):
         wd = self.app.wd
         if text is not None:
