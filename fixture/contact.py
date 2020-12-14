@@ -68,9 +68,10 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contact_page()
         self.select_contact_by_id(id)
-        rows = wd.find_elements_by_name("entry")
-        wd.find_element_by_css_selector("input[value='%s']" % id).click()
-        rows.find_element_by_xpath("./td[8]/a/img").click()
+        #rows = wd.find_elements_by_name("entry")
+        #wd.find_element_by_css_selector("input[value='%s']" % id).click()
+        #rows.find_element_by_xpath("./td[8]/a/img").click()
+        wd.find_element_by_xpath('//img[@alt="Edit"]').click()
         # edit contact form
         self.fill_contact_form(contact)
         # submit edit contact
