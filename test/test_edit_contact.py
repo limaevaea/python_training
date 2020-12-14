@@ -1,7 +1,7 @@
 from model.сontact import Сontact
 import random
 
-def test_edit_some_contact(app, db):
+def test_edit_some_contact(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.create_new_contact(Сontact(middlename="Ekaterina", lastname="Alexandrovna"))
     old_contacts = db.get_contact_list()
@@ -12,3 +12,5 @@ def test_edit_some_contact(app, db):
     assert len(old_contacts) == app.contact.count()
     new_contacts = db.get_contact_list()
     assert sorted(old_contacts, key=Сontact.id_or_max) == sorted(new_contacts, key=Сontact.id_or_max)
+    if check_ui:
+        assert sorted(new_contacts, key=Сontact.id_or_max) == sorted(app.contact.get_contact_list(), key=Сontact.id_or_max)
